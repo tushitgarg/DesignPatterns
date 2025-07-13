@@ -5,19 +5,16 @@ import LLDQuestions.LoggerFramework.LogSubject;
 import LLDQuestions.LoggerFramework.enums.LogLevel;
 
 public class DebugLogger extends AbstractLogger {
-    private LogSubject logSubject;
-
     public DebugLogger(LogSubject logSubject) {
-        this.logSubject = logSubject;
+        super(logSubject);
     }
 
     @Override
     public void logMessage(LogLevel level, String message) {
-        if (LogLevel.DEBUG.equals(level)) {
-            System.out.println(message);
-            logSubject.notifyLogObservers(message);
-            nextLogger.logMessage(level, message);
-        } else {
+        if (level.getLevel() >= LogLevel.DEBUG.getLevel()) {
+            logSubject.notifyLogObservers("Debug:" + message);
+        }
+        if (nextLogger != null) {
             nextLogger.logMessage(level, message);
         }
     }
