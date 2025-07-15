@@ -1,8 +1,8 @@
-package StrategyPattern;
-import StrategyPattern.strategies.CreditCardPayment;
-import StrategyPattern.strategies.PayPalPayment;
-import StrategyPattern.strategies.PaymentStrategy;
-import StrategyPattern.strategies.ShoppingCart;
+package DesignPatterns.StrategyPattern;
+import DesignPatterns.StrategyPattern.strategies.CreditCardPayment;
+import DesignPatterns.StrategyPattern.strategies.PayPalPayment;
+import DesignPatterns.StrategyPattern.strategies.PaymentStrategy;
+import DesignPatterns.StrategyPattern.strategies.ShoppingCart;
 
 public class StrategyDemo {
     public static void main(String[] args) throws Exception {
