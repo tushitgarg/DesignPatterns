@@ -72,6 +72,8 @@ class ParkingSpot {
 
     public boolean isOccupied() { return isOccupied; }
     public SpotType getType() { return type; }
+    public int getSpotNumber() { return spotNumber; }
+    public Vehicle getParkedVehicle() { return parkedVehicle; }
 
     public boolean canFitVehicle(Vehicle vehicle) {
         if (isOccupied) return false;
@@ -126,7 +128,7 @@ class Ticket {
 
     public Ticket(Vehicle vehicle, ParkingSpot spot, int floorNumber) {
         this.vehicleLicensePlate = vehicle.getLicensePlate();
-        this.spotNumber = spot.spotNumber;
+        this.spotNumber = spot.getSpotNumber();
         this.floorNumber = floorNumber;
         this.entryTime = System.currentTimeMillis();
     }
@@ -189,7 +191,7 @@ class ParkingLot {
             }
             Ticket ticket = new Ticket(vehicle, spot, floorNumber);
             tickets.add(ticket);
-            System.out.println("Vehicle " + vehicle.getLicensePlate() + " parked successfully at Floor " + floorNumber + ", Spot " + spot.spotNumber);
+            System.out.println("Vehicle " + vehicle.getLicensePlate() + " parked successfully at Floor " + floorNumber + ", Spot " + spot.getSpotNumber());
         } else {
             System.out.println("Sorry, no available spot for vehicle " + vehicle.getLicensePlate());
         }
@@ -199,7 +201,7 @@ class ParkingLot {
         // Find the vehicle's spot and unpark it
         for (ParkingFloor floor : floors) {
             for (ParkingSpot spot : floor.getSpots()) {
-                if (spot.isOccupied() && spot.parkedVehicle.getLicensePlate().equals(vehicle.getLicensePlate())) {
+                if (spot.isOccupied() && spot.getParkedVehicle().getLicensePlate().equals(vehicle.getLicensePlate())) {
                     spot.unpark();
                     System.out.println("Vehicle " + vehicle.getLicensePlate() + " unparked successfully.");
                     // In a real system, you would also process the ticket for payment here
