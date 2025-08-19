@@ -1,4 +1,4 @@
-package DesignPatterns.ChainOfResponsibility;
+package DesignPatterns.ChainOfResponsibilityPattern;
 
 /**
  * Chain of Responsibility Pattern Demo
